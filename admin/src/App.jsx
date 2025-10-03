@@ -6,10 +6,12 @@ import Add from './pages/Add/Add';
 import Lists from './pages/Lists/Lists';
 import Orders from './pages/Orders/Orders';
 import NotFound from './pages/NotFound/NotFound';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Navbar/>
       <hr />
       <div className="app-content">
