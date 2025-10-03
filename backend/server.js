@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import foodRouter from "./src/routes/foodRoute.js";
 
 const app = express();
 const port = 8000;
@@ -21,6 +22,10 @@ main().then(()=>{
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
 }
+
+//API endpoints
+app.use("/api/food", foodRouter);
+app.use("/images", express.static("./src/uploads"));
 
 //routes
 app.get("/", (req,res)=>{
