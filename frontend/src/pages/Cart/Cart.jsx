@@ -28,9 +28,9 @@ const Cart = () => {
                                 <div key={index} className='cart-item-title cart-items-item'>
                                     <img src={item.image} alt="product image" />
                                     <p>{item.name}</p>
-                                    <p>$ {item.price}</p>
+                                    <p>{"\u20B9"} {item.price}</p>
                                     <p>{cartItems[item._id]}</p>
-                                    <p>$ {item.price * cartItems[item._id]}</p>
+                                    <p>{"\u20B9"} {item.price * cartItems[item._id]}</p>
                                     <p onClick={()=>removeFromCart(item._id)} className='cross'>x</p>
                                 </div>
                                 <hr />
@@ -45,17 +45,17 @@ const Cart = () => {
                     <div>
                         <div className="cart-total-details">
                             <p>Subtotal</p>
-                            <p>$ {getTotalCartAmount()}</p>
+                            <p>{"\u20B9"} {getTotalCartAmount()}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <p>Delivery Fee</p>
-                            <p>$ {getTotalCartAmount() === 0 ? 0 : 2}</p>
+                            <p>{"\u20B9"} {getTotalCartAmount() === 0 ? 0 : 2}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <b>Total</b>
-                            <b>$ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+                            <b>{"\u20B9"} {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
                         </div>
                     </div>
                     <button onClick={()=>getTotalCartAmount() === 0 ? alert("Add item to cart") : navigate("/order")}>PROCEED TO CHECKOUT</button>
