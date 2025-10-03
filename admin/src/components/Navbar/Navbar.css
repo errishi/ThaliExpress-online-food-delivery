@@ -11,3 +11,15 @@
 .navbar .logo{
     width: max(14%, 80px);
 }
+
+@media (max-width: 700px) {
+    .navbar .logo{
+        width: 150px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo{
+        width: 180px;
+    }
+}

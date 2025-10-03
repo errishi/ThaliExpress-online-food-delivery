@@ -6,11 +6,13 @@
   box-sizing: border-box;
   font-family: Outfit;
   scroll-behavior: smooth;
+  font-size: 17px;
 }
 
 body {
   min-height: 100vh;
   background-color: #fcfcfc;
+  font-size: 20px;
 }
 
 a {
@@ -26,4 +28,21 @@ hr{
 
 .app-content{
   display: flex;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Remove arrows for all browsers */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
