@@ -36,6 +36,10 @@ hr{
   gap: 10px;
 }
 
+.cursor{
+  cursor: pointer;
+}
+
 /* Remove arrows for all browsers */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

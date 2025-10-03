@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound/NotFound';
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
+  const server_url = "http://localhost:8000";
+
   return (
     <div>
       <ToastContainer />
@@ -17,10 +19,10 @@ const App = () => {
       <div className="app-content">
         <Sidebar/>
         <Routes>
-          <Route path='/' element={<Add/>} />
-          <Route path='/add' element={<Add/>} />
-          <Route path='/list' element={<Lists/>} />
-          <Route path='/orders' element={<Orders/>} />
+          <Route path='/' element={<Add server_url={server_url}/>} />
+          <Route path='/add' element={<Add server_url={server_url}/>} />
+          <Route path='/list' element={<Lists server_url={server_url}/>} />
+          <Route path='/orders' element={<Orders server_url={server_url}/>} />
           <Route path='*' element={<NotFound/>} />
         </Routes>
       </div>
