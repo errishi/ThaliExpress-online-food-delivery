@@ -6,6 +6,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import foodRouter from "./src/routes/foodRoute.js";
 import userRouter from "./src/routes/userRoute.js";
+import cartRouter from "./src/routes/cartRoute.js";
 
 const app = express();
 const port = 8000;
@@ -28,6 +29,7 @@ async function main() {
 app.use("/api/food", foodRouter);
 app.use("/images", express.static("./src/uploads"));
 app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
 
 //routes
 app.get("/", (req,res)=>{
