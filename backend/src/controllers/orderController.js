@@ -10,7 +10,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 // placing user order from frontend
 const placeOrder = async (req, res) => {
     const frontend_url = "http://localhost:5173";
-    
+
     try {
         // save order in DB
         const newOrder = new orderModel({
@@ -65,4 +65,22 @@ const placeOrder = async (req, res) => {
     }
 };
 
-export { placeOrder };
+const verifyOrder = async (req, res) => {
+    const { orderId, success } = req.body;
+    try {
+        if (success == "true") {
+            await orderModel.findByIdAndUpdate(orderId, { payment: true });
+            res.status(200).json({ success: true, message: "Payment successful" });
+        } else {
+            await orderModel.findByIdAndDelete(orderId);
+            res.status(402).json({
+                success: false, message: "Payment declined. Please check your payment method."
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({success: false, message: "Something went wrong!"});
+    }
+}
+
+export { placeOrder, verifyOrder };
