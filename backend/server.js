@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import foodRouter from "./src/routes/foodRoute.js";
 import userRouter from "./src/routes/userRoute.js";
 import cartRouter from "./src/routes/cartRoute.js";
+import orderRouter from "./src/routes/orderRoute.js";
 
 const app = express();
 const port = 8000;
@@ -30,6 +31,7 @@ app.use("/api/food", foodRouter);
 app.use("/images", express.static("./src/uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
 //routes
 app.get("/", (req,res)=>{
