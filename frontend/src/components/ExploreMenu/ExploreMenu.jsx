@@ -5,28 +5,28 @@ import { menu_list } from '../../assets/assets';
 const ExploreMenu = ({ category, setCategory }) => {
   const menuListRef = useRef(null);
 
-  useEffect(() => {
-    const menuList = menuListRef.current;
+  // useEffect(() => {
+  //   const menuList = menuListRef.current;
 
-    if (!menuList) return; // safety check
+  //   if (!menuList) return; // safety check
 
-    const handleWheel = (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        menuList.scrollBy({
-          left: e.deltaY, // move horizontally based on vertical wheel movement
-          behavior: 'smooth'
-        });
-      }
-    };
+  //   const handleWheel = (e) => {
+  //     if (e.deltaY !== 0) {
+  //       e.preventDefault();
+  //       menuList.scrollBy({
+  //         left: e.deltaY, // move horizontally based on vertical wheel movement
+  //         behavior: 'smooth'
+  //       });
+  //     }
+  //   };
 
-    menuList.addEventListener("wheel", handleWheel);
+  //   menuList.addEventListener("wheel", handleWheel);
 
-    // cleanup when component unmounts
-    return () => {
-      menuList.removeEventListener("wheel", handleWheel);
-    };
-  }, []);
+  //   // cleanup when component unmounts
+  //   return () => {
+  //     menuList.removeEventListener("wheel", handleWheel);
+  //   };
+  // }, []);
 
   return (
     <div className='explore-menu' id='explore-menu'>
