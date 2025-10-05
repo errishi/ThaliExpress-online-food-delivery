@@ -81,6 +81,10 @@
     margin-top: 20px;
 }
 
+.footer-copyright .developer{
+    font-size: 12px;
+}
+
 @media (max-width:800px) {
     .tab-view{
         flex-direction: column;

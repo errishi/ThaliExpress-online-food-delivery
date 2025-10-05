@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Footer.css";
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -21,7 +22,7 @@ const Footer = () => {
                 <div className="footer-content-center">
                     <h2>COMPANY</h2>
                     <ul>
-                        <li>Home</li>
+                        <Link to={"/"}><li>Home</li></Link>
                         <li>About us</li>
                         <li>Delivery</li>
                         <li>Privacy policy</li>
@@ -39,6 +40,9 @@ const Footer = () => {
             <hr />
             <p className="footer-copyright">
                 Copyright {new Date().getFullYear()} &copy; ThaliExpress.com - All Right Reserved.
+            </p>
+            <p className="footer-copyright">
+                <span className='developer'>Design & Develop By</span> Rishikesh Singh
             </p>
         </div>
     )
