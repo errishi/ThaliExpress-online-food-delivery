@@ -15,6 +15,10 @@ const Navbar = ({setShowLogin}) => {
         navigate("/");
     }
 
+    const cartWithoutUser = () => {
+        alert("Login to proceed...");
+    }
+
     return (
         <div className='navbar'>
             <Link to={"/"}><img src={assets.logo} alt="logo" className='logo' /></Link>
@@ -35,8 +39,9 @@ const Navbar = ({setShowLogin}) => {
             <div className="navbar-right">
                 <img src={assets.search_icon} alt="search" />
                 <div className="navbar-search-icon">
-                    <Link to={"/cart"}><img src={assets.basket_icon} alt="basket" /></Link>
-                    <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+                    {token ? <><Link to={"/cart"}><img src={assets.basket_icon} alt="basket" /></Link>
+                    <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div></> : <img src={assets.basket_icon} onClick={cartWithoutUser} alt="basket" />}
+                    
                 </div>
                 {!token ? <button onClick={()=>setShowLogin(true)}>Sign in</button>
                 : <div className='navbar-profile'>
