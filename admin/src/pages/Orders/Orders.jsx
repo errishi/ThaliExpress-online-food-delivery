@@ -13,9 +13,18 @@ const Orders = ({server_url}) => {
     const response = await axios.get(`${server_url}/api/order/list`);
     if(response.data.success){
       setOrders(response.data.data);
-      console.log(response.data.data);
     }else{
       toast.error("Something went wrong!");
+    }
+  }
+
+  const statusHandler = async(event, orderId) => {
+    const response = await axios.post(`${server_url}/api/order/status`, {
+      orderId,
+      status: event.target.value
+    });
+    if(response.data.success){
+      await fetchAllOrders();
     }
   }
 
@@ -49,7 +58,7 @@ const Orders = ({server_url}) => {
             </div>
             <p>Items : {order.items.length}</p>
             <p>{"\u20B9"} {order.amount}</p>
-            <select>
+            <select onChange={(event)=>statusHandler(event, order._id)} value={order.status}>
               <option value="Food Processing">Food Processing</option>
               <option value="Order Confirmed">Order Confirmed</option>
               <option value="Ready for Pickup">Ready for Pickup</option>
