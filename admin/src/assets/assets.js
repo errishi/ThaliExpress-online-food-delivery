@@ -16,4 +16,4 @@ export const assets ={
     cart_plus
 }
 
-export const url = 'http://localhost:8000'
+export const url = 'https://thaliexpress-backend.onrender.com'

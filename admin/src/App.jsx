@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound/NotFound';
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
-  const server_url = "http://localhost:8000";
+  const server_url = "https://thaliexpress-backend.onrender.com";
 
   return (
     <div>
