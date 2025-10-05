@@ -59,6 +59,7 @@
     border-radius: 50%;
     top: -8px;
     right: -8px;
+    animation: fadeBlink 1.2s ease-in-out infinite;
 }
 
 .navbar-profile{

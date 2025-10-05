@@ -27,6 +27,8 @@
 
 .my-orders-order p span{
     color: tomato;
+    margin-right: 3px;
+    animation: fadeBlink 1.2s ease-in-out infinite;
 }
 
 .my-orders-order p b{
