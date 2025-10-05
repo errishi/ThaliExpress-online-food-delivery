@@ -29,17 +29,20 @@ ThaliExpress is an online food delivery platform inspired by India’s tradition
    cd ThaliExpress
 
 2. Install dependencies:
-<pre> ```npm install``` </pre>
+   ```bash
+   npm install
 
-3. Create a .env file in the root directory:
-<pre> ```MONGO_URI=your_mongodb_uri
-        JWT_SECRET=your_secret_key
-        STRIPE_SECRET_KEY=your_stripe_key
-``` </pre>
+4. Create a .env file in the root directory:
+   ```bash
+   MONGO_URI=your_mongodb_uri
+   JWT_SECRET=your_secret_key
+   STRIPE_SECRET_KEY=your_stripe_key
 
-4. Start the backend server:
-<pre> ```npm run server``` </pre>
+4. Start the backend server:(if nodemon is install)
+   ```bash
+   nodemon server.js
 
-5. Start the frontend:
-<pre> ```cd frontend
-        npm start``` </pre>
+6. Start the frontend:
+   ```bash
+   cd frontend
+   npm run dev
