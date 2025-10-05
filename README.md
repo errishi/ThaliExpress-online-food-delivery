@@ -25,7 +25,7 @@ ThaliExpress is an online food delivery platform inspired by India’s tradition
 
 1. Clone the repository:
    ```bash
-   git clone <paste_this_repository_link_here>
+   git clone https://github.com/errishi/ThaliExpress-online-food-delivery.git
    cd ThaliExpress
 
 2. Install dependencies:
