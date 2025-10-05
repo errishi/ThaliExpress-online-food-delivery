@@ -10,7 +10,7 @@ import cartRouter from "./src/routes/cartRoute.js";
 import orderRouter from "./src/routes/orderRoute.js";
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT;
 
 //middleware
 app.use(express.json());        //pass data from frontend to backend in json form
