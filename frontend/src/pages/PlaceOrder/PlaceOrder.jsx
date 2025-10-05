@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./PlaceOrder.css";
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
     const { getTotalCartAmount, token, food_list, server_url, cartItems } = useContext(StoreContext);
@@ -21,48 +22,57 @@ const PlaceOrder = () => {
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setData((data)=>({...data, [name]:value}));
+        setData((data) => ({ ...data, [name]: value }));
     }
 
-    const placeOrder = async(event) => {
-    event.preventDefault();
-    let orderItems = [];
-    food_list.map((item) => {
-        if (cartItems[item._id] > 0) {
-            let itemInfo = item;
-            itemInfo["quantity"] = cartItems[item._id];
-            orderItems.push(itemInfo);
+    const placeOrder = async (event) => {
+        event.preventDefault();
+        let orderItems = [];
+        food_list.map((item) => {
+            if (cartItems[item._id] > 0) {
+                let itemInfo = item;
+                itemInfo["quantity"] = cartItems[item._id];
+                orderItems.push(itemInfo);
+            }
+        });
+        let orderData = {
+            address: data,
+            items: orderItems,
+            amount: getTotalCartAmount() + 15
+        };
+
+        try {
+            let response = await axios.post(
+                server_url + "/api/order/place",
+                orderData,
+                {
+                    headers: {
+                        token: token   // ✅ FIX HERE
+                    }
+                }
+            );
+
+            if (response.data.success) {
+                const { session_url } = response.data;
+                window.location.replace(session_url);
+            } else {
+                alert("Error");
+            }
+        } catch (error) {
+            console.error("Order Error:", error);
+            alert("Something went wrong!");
         }
-    });
-    let orderData = {
-        address: data,
-        items: orderItems,
-        amount: getTotalCartAmount() + 15
     };
 
-    try {
-        let response = await axios.post(
-            server_url + "/api/order/place",
-            orderData,
-            {
-                headers: {
-                    token: token   // ✅ FIX HERE
-                }
-            }
-        );
+    const navigate = useNavigate();
 
-        if (response.data.success) {
-            const { session_url } = response.data;
-            window.location.replace(session_url);
-        } else {
-            alert("Error");
+    useEffect(()=>{
+        if (!token) {
+            navigate('/cart');
+        }else if(getTotalCartAmount() === 0){
+            navigate('/cart');
         }
-    } catch (error) {
-        console.error("Order Error:", error);
-        alert("Something went wrong!");
-    }
-};
-
+    }, [token]);
 
     return (
         <form onSubmit={placeOrder} className='place-order'>
