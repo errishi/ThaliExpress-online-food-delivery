@@ -5,6 +5,7 @@
 .food-display h2{
     font-size: max(2vw, 24px);
     font-weight: 600;
+    margin-bottom: 4rem;
 }
 
 .food-display-list{
@@ -13,4 +14,36 @@
     margin-top: 30px;
     gap: 30px;
     row-gap: 50px;
+}
+
+.food-display-list .spinner{
+    width: 100px;
+    height: 100px;
+    place-self: center;
+    border: 5px solid #bdbdbd;
+    border-top-color: tomato;
+    border-radius: 50%;
+    animation: rotate 1s infinite;
+    display: grid;
+    position: absolute;
+}
+
+@keyframes rotate {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .food-display-list .spinner{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (width: 768px) {
+    .food-display-list .spinner{
+        width: 80px;
+        height: 80px;
+    }
 }
