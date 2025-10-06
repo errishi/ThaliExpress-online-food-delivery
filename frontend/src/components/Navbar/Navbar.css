@@ -166,4 +166,7 @@
     .navbar-profile > img{
         width: 40px;
     }
+    .search-icon{
+        display: none;
+    }
 }
